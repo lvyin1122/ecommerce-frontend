@@ -17,14 +17,14 @@ function Home() {
   const start = 0 + (page - 1) * limit;
   const currentData = data.slice(start, start + limit);
 
-  const productsList = currentData.map((data) => (
+  const productsList = currentData.map((item) => (
     <ProductItem
-      key={data.id}
-      id={data.id}
-      name={data.name}
-      author={data.author}
-      price={data.price}
-      imgSrc={data.imgSrc}
+      key={item.id}
+      id={item.id}
+      name={item.name}
+      author={item.author}
+      price={item.price}
+      imgSrc={item.imgSrc}
     />
   ));
 
