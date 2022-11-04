@@ -1,34 +1,33 @@
 import Carousel from "react-bootstrap/Carousel";
-import styles from "./CarouselFade.module.css";
+import classes from "./CarouselFade.module.css";
 import image1 from "../assets/carousel-img-1.png";
 import image2 from "../assets/carousel-img-2.png";
 import image3 from "../assets/carousel-img-3.png";
 
 function CarouselFade() {
   return (
-    <Carousel fade={true} interval={1000} className={styles.carousel}>
+    <Carousel fade={true} interval={1000} className={classes.carousel}>
       <Carousel.Item>
         <img className="d-block w-100" src={image1} alt="First slide" />
         <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>Build your career with iBookStore</h3>
+          <p>Unlock knowledge for your future.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img className="d-block w-100" src={image2} alt="Second slide" />
-
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3>Unlimited resources</h3>
+          <p>Explore books and workshops developed by experienced engineers</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img className="d-block w-100" src={image3} alt="Third slide" />
 
         <Carousel.Caption>
-          <h3>Third slide label</h3>
+          <h3>Join our community</h3>
           <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            Ask your questions and share your ideas. We are here to help you.
           </p>
         </Carousel.Caption>
       </Carousel.Item>

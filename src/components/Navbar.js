@@ -1,11 +1,11 @@
 import React from "react";
-import styles from "./Navbar.module.css";
+import classes from "./Navbar.module.css";
 
 function Navbar(props) {
     return (
-      <div className={styles.navbar}>
-        <div className={styles.brand}>{props.brand}</div>
-        <div className={styles.cart}>Cart</div>
+      <div className={classes.navbar}>
+        <div className={classes.brand}>{props.brand}</div>
+        <div className={classes.cart}>Cart</div>
       </div>
     );
   }
