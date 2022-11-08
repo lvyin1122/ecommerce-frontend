@@ -24,7 +24,7 @@ function Home() {
       name={item.name}
       author={item.author}
       price={item.price}
-      imgSrc={item.imgSrc}
+      image={item.image}
     />
   ));
 

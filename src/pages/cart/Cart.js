@@ -1,6 +1,6 @@
 import React from "react";
 import CartItem from "../../components/CartItem.js";
-import styles from "./Cart.module.css";
+import classes from "./Cart.module.css";
 import CartContext from "../../store/cart-context.js";
 import { useContext } from "react";
 
@@ -14,14 +14,14 @@ function Cart() {
       name={item.name}
       author={item.author}
       price={item.price}
-      imgSrc={item.imgSrc}
+      image={item.image}
     />
   ));
 
   return (
-    <div className={styles.cart}>
+    <div className={classes.cart}>
       <h1>My Shopping Cart</h1>
-      <ul className={styles.cartList}>{cartList}</ul>
+      <ul className={classes.cartList}>{cartList}</ul>
     </div>
   );
 }
