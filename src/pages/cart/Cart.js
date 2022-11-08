@@ -1,6 +1,6 @@
 import React from "react";
 import CartItem from "../../components/CartItem.js";
-import styles from "./Cart.module.css";
+import classes from "./Cart.module.css";
 import CartContext from "../../store/cart-context.js";
 import AuthContext from "../../store/auth-context.js";
 import { useContext } from "react";
@@ -43,11 +43,11 @@ function Cart() {
   ));
 
   return (
-    <div className={styles.cart}>
+    <div className={classes.cart}>
       <h1>My Shopping Cart</h1>
       {cartList.length > 0 ? (
         <div>
-          <ul className={styles.cartList}>
+          <ul className={classes.cartList}>
             {cartList}
             <button onClick={checkoutHandler}>Checkout</button>
           </ul>

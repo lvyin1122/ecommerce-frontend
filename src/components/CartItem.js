@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./CartItem.module.css";
+import classes from "./CartItem.module.css";
 import { useContext } from "react";
 import CartContext from "../store/cart-context";
 
@@ -10,15 +10,15 @@ function CartItem(props) {
   };
 
   return (
-    <li className={styles.cartItem}>
+    <li className={classes.cartItem}>
       <img src={props.image} alt="" />
-      <div className={styles.center}>
+      <div className={classes.center}>
         <h3>{props.name}</h3>
         <p>By {props.author}</p>
       </div>
-      <div className={styles.right}>
+      <div className={classes.right}>
         <span>${props.price}</span>
-        <span className={styles.remove} onClick={removeCartItemHandler}>
+        <span className={classes.remove} onClick={removeCartItemHandler}>
           Remove
         </span>
       </div>

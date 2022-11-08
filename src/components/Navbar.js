@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Navbar.module.css";
+import classes from "./Navbar.module.css";
 import { Link } from "react-router-dom";
 import AuthContext from "../store/auth-context";
 import { useContext } from "react";
@@ -13,7 +13,7 @@ function Navbar(props) {
   };
 
   const loginLink = (
-    <Link to="/login" className={styles.login}>
+    <Link to="/login" className={classes.login}>
       Log in
     </Link>
   );
@@ -23,11 +23,11 @@ function Navbar(props) {
   const userLink = <Link to="/cart">Hello, {username}!</Link>;
 
   return (
-    <div className={styles.navbar}>
-      <Link to="/" className={styles.brand}>
+    <div className={classes.navbar}>
+      <Link to="/" className={classes.brand}>
         {props.brand}
       </Link>
-      <div className={styles.navLinks}>
+      <div className={classes.navLinks}>
         {isLoggedIn && userLink}
         {isLoggedIn ? logoutLink : loginLink}
         <Link to="/cart">Cart</Link>
