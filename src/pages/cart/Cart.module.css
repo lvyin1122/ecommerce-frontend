@@ -15,7 +15,18 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: flex-end;
     gap: 20px;
-    min-height: 100vh;
+}
+
+.cartList button {
+    color: white;
+    font-size: medium;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    border-radius: .1rem;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: #000080;
 }

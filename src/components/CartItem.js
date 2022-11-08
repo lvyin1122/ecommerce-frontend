@@ -11,7 +11,7 @@ function CartItem(props) {
 
   return (
     <li className={styles.cartItem}>
-      <img src={props.imgSrc} alt="" />
+      <img src={props.image} alt="" />
       <div className={styles.center}>
         <h3>{props.name}</h3>
         <p>By {props.author}</p>

@@ -25,10 +25,16 @@ export function CartProvider(props) {
     );
   };
 
+  // Define a clearCart function that clear the cart list
+  const clearCart = () => {
+    setCartState([]);
+  };
+
   const cartContext = {
     cartState: cartState,
     addCartItem: addCartItem,
     removeCartItem: removeCartItem,
+    clearCart: clearCart,
   };
 
   return (

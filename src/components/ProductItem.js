@@ -10,14 +10,14 @@ function ProductItem(props) {
       id: props.id,
       name: props.name,
       price: props.price,
-      imgSrc: props.imgSrc,
+      image: props.image,
       author: props.author,
     });
   };
 
   return (
     <div className={styles.productItem}>
-      <img src={props.imgSrc} alt="" />
+      <img src={props.image} alt="" />
       <div className={styles.productInfo}>
         <h1>{props.name}</h1>
         <div className={styles.infoBottom}>
