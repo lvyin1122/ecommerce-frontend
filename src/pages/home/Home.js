@@ -34,7 +34,7 @@ function Home() {
         <CarouselFade />
         <h1>Our Products</h1>
         <div className={classes.productsContainer}>{productsList}</div>
-        <PaginationBasic pageCount={pageCount} page={page} setPage={setPage} />
+        <PaginationBasic pageCount={pageCount} page={page} setPage={setPage}/>
       </div>
     </div>
   );
