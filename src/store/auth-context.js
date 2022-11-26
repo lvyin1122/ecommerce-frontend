@@ -25,7 +25,6 @@ export function AuthProvider(props) {
         localStorage.setItem('authState', JSON.stringify(authState));
     };
 
-
     const logout = () => {
         setAuthState({
             isLoggedIn: false,

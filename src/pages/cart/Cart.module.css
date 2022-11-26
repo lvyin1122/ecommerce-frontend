@@ -30,3 +30,13 @@
     text-decoration: none;
     background-color: #000080;
 }
+
+.cartList button:hover {
+    background-color: #0000aa;
+}
+
+.cartList h2 {
+    font-size: large;
+    font-weight: 600;
+    margin: 0px;
+}

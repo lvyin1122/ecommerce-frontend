@@ -13,7 +13,7 @@ function Navbar(props) {
   };
 
   const loginLink = (
-    <Link to="/login" className={classes.login}>
+    <Link to="/login">
       Log in
     </Link>
   );

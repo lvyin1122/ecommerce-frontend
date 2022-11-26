@@ -1,34 +1,51 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
+import StripeCheckout from "react-stripe-checkout";
 import CartItem from "../../components/CartItem.js";
-import classes from "./Cart.module.css";
 import CartContext from "../../store/cart-context.js";
 import AuthContext from "../../store/auth-context.js";
-import { useContext } from "react";
+import classes from "./Cart.module.css";
 
 function Cart() {
+  // Import publishable key from .env file
+  const publishableKey = process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY;
+
+  // Get token from AuthContext
+  const { token } = useContext(AuthContext);
+
+  // Desctructure cartState from CartContext
   const { cartState, clearCart } = useContext(CartContext);
-  const { isLoggedIn, userId } = useContext(AuthContext);
 
-  const checkoutHandler = async () => {
-    // Send cart data to server
-    if (isLoggedIn) {
+  // Define the total state variable
+  const [total, setTotal] = React.useState(0);
 
-      const response = await fetch(
-        "http://localhost:8800/api/carts/checkout/" + userId,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer" + localStorage.getItem("authState").token,
-          },
-        }
-      );
-      const data = await response.json();
-      console.log(data);
-      clearCart();
-    } else {
-      alert("Please log in to checkout");
-    }
+  // Calculate total whenever cartState changes
+  useEffect(() => {
+    let total = 0;
+    cartState.forEach((item) => {
+      total += item.price;
+    });
+    setTotal(total);
+  }, [cartState]);
+
+  // Send payment request to server after get the stripe token
+  const onToken = (stripeToken) => {
+    fetch("http://localhost:8800/api/payment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // Send with authorization header to verify the user
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        tokenId: stripeToken.id,
+        amount: total,
+      }),
+    }).then((response) => {
+      if (response.status === 200) {
+        alert("Payment successful");
+        clearCart();
+      }
+    });
   };
 
   const cartList = cartState.map((item) => (
@@ -49,7 +66,13 @@ function Cart() {
         <div>
           <ul className={classes.cartList}>
             {cartList}
-            <button onClick={checkoutHandler}>Checkout</button>
+            <h2>Total: ${total}</h2>
+            <StripeCheckout
+              token={onToken}
+              stripeKey={publishableKey}
+            >
+              <button>Checkout</button>
+            </StripeCheckout>
           </ul>
         </div>
       ) : (

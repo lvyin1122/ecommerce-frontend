@@ -27,6 +27,7 @@ function Login() {
     // Store the token in the local storage
     try {
       const data = await response.json();
+      console.log(data);
       const authState = {
         isLoggedIn: true,
         token: data.token,
@@ -34,7 +35,6 @@ function Login() {
         userId: data.userId,
       };
       login(authState);
-      console.log(data);
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -49,7 +49,6 @@ function Login() {
           <Form.Label>Email</Form.Label>
           <Form.Control type="email" placeholder="Enter email" />
         </Form.Group>
-
         <Form.Group className="mb-3" controlId="password">
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" />
