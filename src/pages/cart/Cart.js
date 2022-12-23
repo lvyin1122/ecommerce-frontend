@@ -41,9 +41,18 @@ function Cart() {
         amount: total,
       }),
     }).then((response) => {
-      if (response.status === 200) {
+      if (response.status === 202) {
         alert("Payment successful");
         clearCart();
+      }
+      else if (response.status === 401) {
+        alert("Please log in first");
+      }
+      else if (response.status === 403) {
+        alert("You are not authorized to make this payment");
+      }
+      else {
+        alert("Payment failed");
       }
     });
   };

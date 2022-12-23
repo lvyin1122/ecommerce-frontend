@@ -27,7 +27,6 @@ function Login() {
     // Store the token in the local storage
     try {
       const data = await response.json();
-      console.log(data);
       const authState = {
         isLoggedIn: true,
         token: data.token,
