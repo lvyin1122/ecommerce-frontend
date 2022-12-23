@@ -16,9 +16,7 @@ function Home() {
 
   useEffect(() => {
     // Fetch the data from the API
-    fetch(
-      'http://localhost:8800/api/products'
-    )
+    fetch("http://localhost:8800/api/products")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
