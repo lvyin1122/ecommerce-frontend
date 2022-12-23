@@ -3,12 +3,13 @@ import ProductItem from "../../components/ProductItem";
 import CarouselFade from "../../components/CarouselFade";
 import PaginationBasic from "../../components/PaginationBasic";
 import classes from "./Home.module.css";
+import data from "../../productsData";
 
 function Home() {
   // Initialize the state indicating the active page
   const [page, setPage] = useState(1);
   // Initialize the products state
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(data);
 
   // Each page contains 6 items
   const limit = 6;

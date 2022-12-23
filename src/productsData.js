@@ -29,7 +29,7 @@ const data = [
     author: "Susan Williams",
     price: 13.99,
     image:
-      "https://www.hkcodingclub.com/wp-content/uploads/2022/02/share-nodejs-logo-1024x536.png",
+      "https://uploads-ssl.webflow.com/60d29cc33f302e8be91cf0e2/60e828d815c1ffbc7ee86743_5da911dbd21c06c44f5791b6_Nodejs-blog-feature-img.jpeg",
   },
   {
     id: 4,
@@ -67,8 +67,7 @@ const data = [
     name: "Spring Framework Maserclass",
     author: "Rose Goodman",
     price: 10.99,
-    image:
-      "https://spring.io/images/OG-Spring.png",
+    image: "https://spring.io/images/OG-Spring.png",
   },
 ];
 
