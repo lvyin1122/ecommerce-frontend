@@ -4,7 +4,9 @@ import CartContext from "../store/cart-context";
 import { useContext } from "react";
 
 function ProductItem(props) {
+  // Get the addCartItem function from CartContext
   const { addCartItem } = useContext(CartContext);
+  // Define a handler function that add the current item to the cart
   const addCartItemHandler = () => {
     addCartItem({
       id: props.id,
@@ -15,8 +17,8 @@ function ProductItem(props) {
     });
   };
 
+  // Apply the handler function to the "Add to cart" button
   return (
-
     <div className={classes.productItem}>
       <img src={props.image} alt="" />
       <div className={classes.productInfo}>
@@ -24,7 +26,7 @@ function ProductItem(props) {
         <div className={classes.infoBottom}>
           <div className={classes.infoLeft}>
             <span className={classes.author}>{props.author}</span>
-            <span className={classes.price}>{props.price}</span>
+            <span className={classes.price}>${props.price}</span>
           </div>
           <button onClick={addCartItemHandler}>Add to cart</button>
         </div>

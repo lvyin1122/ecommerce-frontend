@@ -11,10 +11,15 @@ function Login() {
   const { login } = useContext(AuthContext);
 
   const handleSubmit = async (event) => {
+    // Prevent default actions
     event.preventDefault();
+
+    // Get email and password from the form
     const email = event.target.email.value;
     const password = event.target.password.value;
-    const response = await fetch("http://localhost:8800/api/auth/login", {
+
+    // Get response from the server
+    const response = await fetch("http://localhost:8800/auth/login", {
       method: "POST",
       body: JSON.stringify({
         email,
@@ -24,17 +29,18 @@ function Login() {
         "Content-Type": "application/json",
       },
     });
-    // Store the token in the local storage
     try {
       const data = await response.json();
-      console.log(data);
+      console.log(data)
       const authState = {
         isLoggedIn: true,
         token: data.token,
         username: data.username,
         userId: data.userId,
       };
+      // Call the login function to update authState
       login(authState);
+      // Redirect to the home page
       navigate("/");
     } catch (error) {
       console.log(error);

@@ -3,12 +3,12 @@ import { createContext, useState } from "react";
 // Create the cart context
 const CartContext = createContext();
 
-// Define initial state for cart items
+// Define initial state for cart items, which should be an empty list
 const initialCartState = [];
 
 // Define CartProvider component
 export function CartProvider(props) {
-  // Apply useState hook to update the state of the cart
+  // Apply useState hook to generate a update function
   const [cartState, setCartState] = useState(initialCartState);
 
   // Define a addCartItem function that add a product to the cart list
@@ -30,6 +30,7 @@ export function CartProvider(props) {
     setCartState([]);
   };
 
+  // Define a cartContext object to include the state and the addCartItem function
   const cartContext = {
     cartState: cartState,
     addCartItem: addCartItem,
