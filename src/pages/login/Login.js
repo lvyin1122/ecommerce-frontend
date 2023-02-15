@@ -26,7 +26,7 @@ function Login() {
         password,
       });
       // Get data from the response
-      const data = await response.json();
+      const data = response.data;
       // Define authState
       const authState = {
         isLoggedIn: true,

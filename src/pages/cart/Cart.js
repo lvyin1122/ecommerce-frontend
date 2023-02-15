@@ -35,6 +35,7 @@ function Cart() {
     });
 
     try {
+
       const response = await axios.post(
         "http://localhost:8800/payment",
         body,
@@ -46,6 +47,7 @@ function Cart() {
           },
         }
       );
+      
       if (response.status === 200) {
         alert("Payment successful");
         clearCart();
@@ -54,6 +56,8 @@ function Cart() {
       }
     } catch (error) {
       console.log(error);
+      alert("Payment failed");
+
     }
   };
 
