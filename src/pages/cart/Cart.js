@@ -9,10 +9,8 @@ import classes from "./Cart.module.css";
 const publishableKey = process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY;
 
 function Cart() {
-  console.log(publishableKey);
   // Get token from AuthContext
   const { token } = useContext(AuthContext);
-  console.log(token);
 
   // Desctructure cartState from CartContext
   const { cartState, clearCart } = useContext(CartContext);

@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import classes from "./Login.module.css";
 import { Form, Button } from "react-bootstrap";
 import AuthContext from "../../store/auth-context";
@@ -19,19 +20,14 @@ function Login() {
     const password = event.target.password.value;
 
     // Get response from the server
-    const response = await fetch("http://localhost:8800/auth/login", {
-      method: "POST",
-      body: JSON.stringify({
+    try {
+      const response = await axios.post("http://localhost:8800/auth/login", {
         email,
         password,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    try {
+      });
+      // Get data from the response
       const data = await response.json();
-      console.log(data)
+      // Define authState
       const authState = {
         isLoggedIn: true,
         token: data.token,
