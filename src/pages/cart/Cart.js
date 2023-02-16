@@ -35,7 +35,6 @@ function Cart() {
     });
 
     try {
-
       const response = await axios.post(
         "http://localhost:8800/payment",
         body,
