@@ -4,12 +4,16 @@ import ProductItem from "../../components/ProductItem";
 import CarouselFade from "../../components/CarouselFade";
 import PaginationBasic from "../../components/PaginationBasic";
 import classes from "./Home.module.css";
+import productsData from "../../productsData";
 
 function Home() {
   // Initialize the state indicating the active page
   const [page, setPage] = useState(1);
+
   // Initialize the products state
-  const [products, setProducts] = useState([]);
+  // The products state is initialized with the productsData for testing purpose
+  // Change productsData to [] to fetch the data from the API when your server is ready
+  const [products, setProducts] = useState(productsData);
 
   // Each page contains 6 items
   const limit = 6;
@@ -23,7 +27,9 @@ function Home() {
       // Get data from the response
       const data = await response.data;
       // Update the products state
-      setProducts(data);
+      if (data) {
+        setProducts(data);
+      }
     }
     // Call the async function
     fetchProducts();
