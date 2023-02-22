@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import classes from "./Login.module.css";
 import { Form, Button } from "react-bootstrap";
 import AuthContext from "../../store/auth-context";
@@ -11,29 +12,31 @@ function Login() {
   const { login } = useContext(AuthContext);
 
   const handleSubmit = async (event) => {
+    // Prevent default actions
     event.preventDefault();
+
+    // Get email and password from the form
     const email = event.target.email.value;
     const password = event.target.password.value;
-    const response = await fetch("http://localhost:8800/api/auth/login", {
-      method: "POST",
-      body: JSON.stringify({
+
+    // Get response from the server
+    try {
+      const response = await axios.post("http://localhost:8800/auth/login", {
         email,
         password,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    // Store the token in the local storage
-    try {
-      const data = await response.json();
+      });
+      // Get data from the response
+      const data = response.data;
+      // Define authState
       const authState = {
         isLoggedIn: true,
         token: data.token,
         username: data.username,
         userId: data.userId,
       };
+      // Call the login function to update authState
       login(authState);
+      // Redirect to the home page
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -55,7 +58,6 @@ function Login() {
         <Button variant="primary" type="submit">
           Submit
         </Button>
-        <Button variant="link">Register</Button>
       </Form>
     </div>
   );

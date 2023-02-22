@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ProductItem from "../../components/ProductItem";
 import CarouselFade from "../../components/CarouselFade";
@@ -13,16 +14,27 @@ function Home() {
   // Each page contains 6 items
   const limit = 6;
 
+  // useEffect hook is used to fetch the data from the API
   useEffect(() => {
-    // Fetch the data from the API
-    fetch(
-      'http://localhost:8800/api/products'
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        // Set the data to the state
-        setProducts(data);
-      });
+    // Declare a async function to fetch the data
+    const fetchProducts = async () => {
+      try {
+        // Get the response from the server
+        const response = await axios.get("http://localhost:8800/products");
+        // Get data from the response
+        const data = await response.data;
+        // Update the products state
+        if (data) {
+          setProducts(data);
+        }
+        // Catch and log any errors
+      } catch (error) {
+        console.log(error);
+        alert("Error fetching products. Maybe your server is not running?");
+      }
+    };
+    // Call the async function
+    fetchProducts();
   }, []);
 
   // Compute the number of pages from the number of items
